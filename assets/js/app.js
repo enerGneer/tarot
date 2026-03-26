@@ -277,7 +277,7 @@ function getPromptSuffix(hasSpread) {
 function buildCopyText(cards, question, spread) {
   const lines = [];
   if (question) lines.push(`질문 : ${question}`);
-  if (spread) lines.push(`스프레드 : ${spread.name}`);
+  if (spread) lines.push(`3카드 스프레드 : ${spread.name}`);
   cards.forEach((card, i) => {
     if (spread) {
       lines.push(`${i + 1}. ${spread.positions[i]} : ${card.name}`);
