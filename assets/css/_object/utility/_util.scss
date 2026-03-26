@@ -1,0 +1,162 @@
+@use "../../_foundation/setting" as *;
+
+
+// --------------------------------------------------------------
+//   Common
+// --------------------------------------------------------------
+
+// 縦横スクロールを無効化
+.no-scroll {
+    overflow: hidden; 
+    height: 100vh; // ビューポート全体の高さ
+}
+
+// ヘッダーとの距離
+.u-spTop {
+    @include md {
+        padding-top: 60px;
+        background-color: $color_wh;
+    }
+}
+
+// --------------------------------------------------------------
+//   CMS
+// --------------------------------------------------------------
+.cms-hide {
+    display: none!important;
+}
+
+
+// ==========================================================
+//   display
+// ==========================================================
+.u-pc {
+    // display: block;
+}
+.u-tb {
+    display: none !important;
+}
+.u-sp {
+    display: none !important;
+}
+.u-pctb {
+    // display: block !important;
+}
+.u-tbsp {
+    display: none !important;
+}
+.u-sm {
+    display: none !important;
+}
+
+@include xl {
+    .u-pc {
+        display: none !important;
+    }
+    .u-tb {
+        display: block !important;
+    }
+    .u-sp {
+        display: none !important;
+    }
+    .u-pctb {
+        // display: block !important;
+    }
+    .u-tbsp {
+        display: block !important;
+    }
+    .u-sm {
+        display: none !important;
+    }
+}
+@include md {
+    .u-pc {
+        display: none !important;
+    }
+    .u-tb {
+        display: none !important;
+    }
+    .u-sp {
+        display: block !important;
+    }
+    .u-pctb {
+        display: none !important;
+    }
+    .u-tbsp {
+        display: block !important;
+    }
+    .u-sm {
+        display: none !important;
+    }
+}
+
+@include sm {
+    .u-sm {
+        display: block !important;
+    }
+}
+
+// --------------------------------------------------------------
+//   Accessibility
+// --------------------------------------------------------------
+// Text meant only for screen readers. 
+.screen-reader-text:not(:focus):not(:active) {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute !important;
+    width: 1px;
+    word-wrap: normal !important;
+}
+.screen-reader-text:focus {
+    background-color: #000;
+    border-radius: 3px;
+    box-shadow: 0 0 2px 2px #000;
+    clip: auto !important;
+    -webkit-clip-path: none;
+    clip-path: none;
+    color: #fff;
+    display: block;
+    font-size: .875rem;
+    font-weight: 700;
+    height: auto;
+    left: 5px;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    text-decoration: none;
+    top: 5px;
+    width: auto;
+    z-index: 100000
+}
+
+// --------------------------------------------------------------
+//  「本文へ移動」スキップリンク
+// --------------------------------------------------------------
+.skipNav {
+    position: absolute;
+    top: -26px;
+    left: 0;
+    z-index: 9999;
+    transition: top .3s;    
+    display: inline-block;
+    font-size: 13px;
+    padding: 1px 10px;
+    height: 26px;
+    overflow: hidden;
+    color: $color_wh;
+    text-decoration: none;
+    border-radius: 0 0 8px 8px;
+    background: $color_main;
+    &:focus {
+        color: $color_wh;
+        left: 0; 
+        top: 0;
+        width: auto; 
+        height: auto; 
+        overflow: visible; 
+    }
+}

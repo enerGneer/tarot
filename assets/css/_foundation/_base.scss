@@ -1,0 +1,61 @@
+@use "_setting" as *;
+
+// ==========================================================
+// base style
+// ==========================================================
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+body {
+    font-family: $font-default;
+    font-weight: 400;
+    font-style: normal;
+    width: 100%;
+    font-size: clampCalc(1.4rem, 1.6rem);
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+    font-variant-numeric: tabular-nums;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "palt";
+    color: $color_blk;
+    overflow-x: hidden;
+    min-width: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    position: relative;
+    &.js-ready {
+        opacity: 1;
+    }
+}
+
+main {
+    overflow: hidden;
+}
+
+// scroll
+// ::-webkit-scrollbar-thumb {
+//     background: $color_bg;
+// }
+
+// ::-webkit-scrollbar {
+//     background: $color_blk;
+//     width: 5px;
+//     position: relative;
+//     z-index: 9999;
+// }
+
+i {
+    font-style: normal;
+    display: inline-block;
+    .mod--pc {
+        // PC のみ inline-block にする
+        @include md {
+            display: unset !important;
+        }
+    }
+}
+
+em {
+    font-style: normal;
+}

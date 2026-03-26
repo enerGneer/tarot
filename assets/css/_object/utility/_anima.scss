@@ -1,0 +1,171 @@
+@use "../../_foundation/setting" as *;
+
+// --------------------------------------------------------------
+//  Animation
+// --------------------------------------------------------------
+
+[data-ani] {
+    --ani-delay: 0s;
+    --ani-duration: 1.5s;
+    pointer-events: none;
+    &.is-animated-done {
+        pointer-events: auto;
+    }
+}
+
+.ani-width {
+    width: 0;
+    transition: width var(--ani-duration) $ease var(--ani-delay);
+    &.is-animated {
+        width: 100%;
+    }
+}
+
+.ani-blur {
+    filter: blur(10px);
+    transition: opacity var(--ani-duration) $ease var(--ani-delay),
+        transform var(--ani-duration) $ease var(--ani-delay),
+        filter var(--ani-duration) $ease var(--ani-delay);
+    &.is-animated {
+        filter: blur(0);
+    }
+}
+
+.ani-br {
+    will-change: filter;
+    filter: brightness(1.3);
+    transition: filter var(--ani-duration) cubic-bezier(0.303, 0.475, 0.72, 0.819) var(--ani-delay);
+    &.is-animated {
+        filter: brightness(1);
+    }
+    &.ani-blur {
+        filter: brightness(1.3) blur(10px);
+        &.is-animated {
+            filter: brightness(1) blur(0);
+        }
+    }
+    &-s {
+        @extend .ani-br;
+        filter: brightness(1.8);
+        &.is-animated {
+            filter: brightness(1);
+        }
+        &.ani-blur {
+            filter: brightness(1.8) blur(10px);
+            &.is-animated {
+                filter: brightness(1) blur(0);
+            }
+        }
+    }
+}
+
+
+.ani-fade {
+    opacity: 0;
+    transition: opacity var(--ani-duration) $ease var(--ani-delay),
+        transform var(--ani-duration) $ease var(--ani-delay),
+        filter var(--ani-duration) $ease var(--ani-delay);
+    
+    &.is-animated {
+        opacity: 1;
+    }
+    &-up {
+        @extend .ani-fade;
+        transform: translateY(15px);
+        &.is-animated {
+            transform: translateY(0);
+        }
+        &-s {
+            @extend .ani-fade;
+            transform: translateY(30px);
+            &.is-animated {
+                transform: translateY(0);
+            }
+        }
+    }
+    &-down {
+        @extend .ani-fade;
+        transform: translateY(-15px);
+        &.is-animated {
+            transform: translateY(0);
+        }
+        &-full {
+            @extend .ani-fade;
+            transform: translateY(-100%);
+            &.is-animated {
+                transform: translateY(0);
+            }
+        }
+        &-s {
+            @extend .ani-fade;
+            transform: translateY(-30px);
+            &.is-animated {
+                transform: translateY(0);
+            }
+        }
+    }
+    &-right {
+        @extend .ani-fade;
+        transform: translateX(-15px);
+        &.is-animated {
+            transform: translateX(0);
+        }
+        &-s {
+            @extend .ani-fade;
+            transform: translateX(-30px);
+            &.is-animated {
+                transform: translateX(0);
+            }
+        }
+    }
+    &-left {
+        @extend .ani-fade;
+        transform: translateX(15px);
+        &.is-animated {
+            transform: translateX(0);
+        }
+        &-s {
+            @extend .ani-fade;
+            transform: translateX(30px);
+            &.is-animated {
+                transform: translateX(0);
+            }
+        }
+    }
+}
+
+.ani-scale {
+    transform: scale(0.6);
+    transform-origin: center;
+    transition: opacity var(--ani-duration) $ease var(--ani-delay),
+        transform var(--ani-duration) $ease var(--ani-delay);
+    &.is-animated {
+        transform: scale(1);
+    }
+}
+
+.ani-zoom {
+    transform: scale(1.2);
+    transform-origin: center;
+    transition: transform var(--ani-duration) $ease-out var(--ani-delay);
+    &.is-animated {
+        transform: scale(1);
+    }
+}
+
+.ani-clip {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0;
+    transition: all var(--ani-duration) ease-in-out var(--ani-delay);
+    will-change: clip-path;
+    &-full {
+        @extend .ani-clip;
+        @include md {
+            transition: all calc(var(--ani-duration) / 2) $ease-out calc(var(--ani-delay) / 2);
+        }
+    }
+    &.is-animated {
+        opacity: 1;
+        clip-path: inset(0);
+    }
+}

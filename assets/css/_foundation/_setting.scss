@@ -1,0 +1,100 @@
+// main color
+$color_wh: #ffffff;
+$color_blk: #222;
+$color_main: #665ABE; //btn //비활성화 버튼은 오퍼시티 0.3　버튼의 높이는 48px
+$color_bg: #2B293B;
+$color_input: #47455D;
+
+$color_card_r_bg: #F2EFED; //result card
+$color_card_b_main: #7266A5; // drw card main
+$color_card_b_border: #B9ACE0; // drw card border
+$color_card_b_sdw: 0 10px 18px #00000047; // drw card box-shadow
+$color_card_b_br: 3px; // drw card border-radius
+
+$font-default: "Noto Sans JP", sans-serif;
+
+// transition ease
+$ease: cubic-bezier(0.42, 0, 0.58, 1);
+$ease-out: cubic-bezier(.07,.09,.09,.62);
+
+// viewpoint
+$se: 340px;   // iphon se
+$sm: 440px;
+$md: 768px;
+$lg: 960px;
+$xl: 1200px;
+
+@mixin se {
+    @media (max-width: ($se)) {
+        @content;
+    }
+}
+@mixin sm {
+    @media (max-width: ($sm)) {
+        @content;
+    }
+}
+@mixin md {
+    @media (max-width: ($md)) {
+        @content;
+    }
+}
+@mixin lg {
+    @media (max-width: ($lg)) {
+        @content;
+    }
+}
+@mixin xl {
+    @media (max-width: ($xl)) {
+        @content;
+    }
+}
+
+// ------------------------------------------------------------
+//  Clamp Size Calculator
+@function clampCalc($val1, $val2, $min-vp: 390, $max-vp: 1300, $root-font-size: 10) {
+    $unit: unit($val1);
+    $min-val: min($val1, $val2);
+    $max-val: max($val1, $val2);
+    $min-val-num: $min-val / ($min-val * 0 + 1);
+    $max-val-num: $max-val / ($max-val * 0 + 1);
+    $vp-diff: $max-vp - $min-vp;
+
+    $calc-min: if($unit == 'rem', $min-val-num * $root-font-size, $min-val-num);
+    $calc-max: if($unit == 'rem', $max-val-num * $root-font-size, $max-val-num);
+    $calc-unit: if($unit == 'rem', 'px', $unit);
+    
+    $slope: ($calc-max - $calc-min) / $vp-diff;
+    $intersection: $calc-min - ($slope * $min-vp);
+    
+    $value-at-min-vp: $intersection + ($slope * $min-vp);
+    $value-at-max-vp: $intersection + ($slope * $max-vp);
+    
+    $clamp-min: if($unit == 'rem', ($value-at-min-vp / $root-font-size), $value-at-min-vp);
+    $clamp-max: if($unit == 'rem', ($value-at-max-vp / $root-font-size), $value-at-max-vp);
+    
+    @return clamp(
+        #{$clamp-min}#{$unit},
+        #{$intersection}#{$calc-unit} + #{$slope * 100}vw,
+        #{$clamp-max}#{$unit}
+    );
+}
+
+
+// --------------------------------------------------------------
+//  mixin
+// --------------------------------------------------------------
+
+// hover
+@mixin hover {
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            @content;
+        }
+    }
+    @media (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        &:hover {
+            @content;
+        }
+    }
+}
