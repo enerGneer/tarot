@@ -18,7 +18,8 @@ body {
     font-variant-numeric: tabular-nums;
     -webkit-font-smoothing: antialiased;
     font-feature-settings: "palt";
-    color: $color_blk;
+    color: $color_wh;
+    background: $color_bg !important;
     overflow-x: hidden;
     min-width: 100%;
     opacity: 0;
@@ -33,23 +34,10 @@ main {
     overflow: hidden;
 }
 
-// scroll
-// ::-webkit-scrollbar-thumb {
-//     background: $color_bg;
-// }
-
-// ::-webkit-scrollbar {
-//     background: $color_blk;
-//     width: 5px;
-//     position: relative;
-//     z-index: 9999;
-// }
-
 i {
     font-style: normal;
     display: inline-block;
     .mod--pc {
-        // PC のみ inline-block にする
         @include md {
             display: unset !important;
         }

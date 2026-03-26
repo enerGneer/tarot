@@ -187,15 +187,28 @@
 ```
 /
 ├── index.html
-├── css/
-│   └── style.css
-├── js/
-│   ├── app.js          # 메인 로직 (드로잉, 화면 전환, URL 파라미터)
-│   └── data/
-│       ├── cards.json   # 78장 카드 데이터
-│       └── spreads.json # 배열 프리셋 데이터. 이번 구현에서는 일단 제외한다.
-├── images/
-│   └── cards/           # 78장 카드 이미지
+├── assets/
+│   ├── css/
+│   │   ├── style.scss       # 메인 SCSS (파셜 import)
+│   │   ├── style.css        # 컴파일 결과 (커밋)
+│   │   ├── _foundation/
+│   │   │   ├── _setting.scss
+│   │   │   ├── _reset.scss
+│   │   │   └── _base.scss
+│   │   └── _object/
+│   │       ├── component/
+│   │       │   ├── _comp.scss   # 공통 컴포넌트 (.c-btn 등)
+│   │       │   └── _tarot.scss  # 타로 앱 전용 스타일
+│   │       └── utility/
+│   │           ├── _util.scss
+│   │           ├── _space.scss
+│   │           └── _anima.scss
+│   ├── js/
+│   │   ├── app.js           # 메인 로직 (드로잉, 화면 전환, URL 파라미터)
+│   │   └── data/
+│   │       ├── cards.json   # 78장 카드 데이터
+│   │       └── spreads.json # 배열 프리셋 데이터
+│   └── images/              # 78장 카드 이미지
 └── README.md
 ```
 

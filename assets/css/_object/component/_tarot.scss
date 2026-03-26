@@ -1,0 +1,334 @@
+@use "../../_foundation/setting" as *;
+
+$tarot-gap: 30px;
+.c-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  width: 100%;
+  border-radius: 100px;
+  font-size: 18px;
+  color: $color_wh;
+  background-color: rgba($color_main, 0.3);
+  font-weight: 600;
+
+  &.is-active {
+    background-color: $color_main;
+  }
+}
+
+
+
+// ── Shared ──────────────────────────────────────────────────────────────────
+
+.is-hidden {
+  display: none !important;
+}
+
+// ── View Base ────────────────────────────────────────────────────────────────
+
+.view {
+  min-height: 100vh;
+  background: $color_bg;
+}
+
+// ── Drawing View ─────────────────────────────────────────────────────────────
+
+.drawing-view {
+  > .u-inner {
+    display: flex;
+    flex-direction: column;
+    gap: $tarot-gap;
+    padding-top: 30px;
+    padding-bottom: 60px;
+  }
+}
+.p-top {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+// Question textarea
+.p-question {
+  width: 100%;
+  background: $color_input;
+  border: 1px solid rgba($color_wh, 0.1);
+  border-radius: 12px;
+  color: $color_wh;
+  font-family: $font-default;
+  font-size: 1.5rem;
+  padding: 13px 16px;
+  resize: none;
+  overflow: hidden;
+  min-height: 48px;
+  transition: border-color 0.2s;
+
+  &::placeholder {
+    color: rgba($color_wh, 0.35);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: rgba($color_card_b_border, 0.6);
+  }
+}
+
+// Spread select
+.p-spread-select {
+  width: 100%;
+  background: $color_input;
+  border: 1px solid rgba($color_wh, 0.1);
+  border-radius: 12px;
+  color: $color_wh;
+  font-family: $font-default;
+  font-size: 1.5rem;
+  padding: 13px 40px 13px 16px;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,0.35)' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  cursor: pointer;
+  transition: border-color 0.2s;
+
+  &:focus {
+    outline: none;
+    border-color: rgba($color_card_b_border, 0.6);
+  }
+
+  option {
+    background: $color_bg;
+    color: $color_wh;
+  }
+}
+
+// Position slots (shown when spread selected)
+.p-position-slots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.p-slot-label {
+  background: $color_input;
+  border: 1px solid rgba($color_wh, 0.1);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 1.3rem;
+  color: rgba($color_wh, 0.5);
+}
+
+// Card deck — overlapping multi-row layout
+.p-deck {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.p-deck-row {
+  display: flex;
+  align-items: flex-start;
+}
+
+.p-card-back {
+  box-sizing: border-box; // override `all: unset` from button reset
+  flex-shrink: 0;
+  background: linear-gradient(145deg, lighten($color_card_b_main, 17%) 0%, $color_card_b_main 100%);
+  border: 1px solid $color_card_b_border;
+  border-radius: $color_card_b_br;
+  box-shadow: $color_card_b_sdw;
+  cursor: pointer;
+  transition: transform 0.18s $ease, opacity 0.18s $ease;
+  position: relative;
+  z-index: 1;
+
+  @include hover {
+    transform: translateY(-6px);
+    z-index: 10;
+  }
+
+  &.is-selected {
+    transform: translateY(-5px);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+// Draw / counter button — extends .c-btn
+.p-draw-btn {
+  gap: 8px;
+  cursor: default;
+
+  &.is-active {
+    cursor: pointer;
+  }
+}
+
+// Remaining count badge inside draw button
+.c-count-badge {
+  display: grid;
+  place-items: center;
+  line-height: 1;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: $color_wh;
+  color: $color_main;
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+// ── Result View ──────────────────────────────────────────────────────────────
+
+.result-view {
+  > .u-inner {
+    display: flex;
+    flex-direction: column;
+    gap: $tarot-gap;
+    padding-top: $tarot-gap;
+    padding-bottom: 40px;
+  }
+}
+
+.p-header {
+  position: sticky;
+  top: 0;
+  height: 60px;
+  background: $color_bg;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba($color_wh, 0.08);
+
+  h1 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: $color_wh;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+}
+
+.p-back-btn {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color_wh;
+  font-size: 2.8rem;
+  line-height: 1;
+  padding: 0;
+  margin-left: 4px;
+  flex-shrink: 0;
+  transition: color 0.15s;
+  transform: translateY(-4px);
+
+  @include hover {
+    color: $color_main;
+  }
+}
+
+// Result cards — 3-column row
+.p-result-cards {
+  display: flex;
+  gap: 10px;
+}
+
+.p-result-card {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
+  &__label {
+    font-size: 1.2rem;
+    color: rgba($color_wh, 0.5);
+    text-align: center;
+    white-space: nowrap;
+    background: #47455D;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 5px 14px;
+    line-height: 1;
+  }
+
+  &__img {
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    background: $color_card_r_bg;
+
+    img {
+      width: 100%;
+      display: block;
+      border-radius: 2px;
+      aspect-ratio: 2 / 3;
+      object-fit: cover;
+    }
+  }
+
+  &__name {
+    font-size: 1.1rem;
+    color: rgba($color_wh, 0.5);
+    text-align: center;
+    line-height: 1.3;
+  }
+}
+
+// Copy block
+.p-copy-block {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.p-copy-text {
+  background: $color_input;
+  border: 1px solid rgba($color_wh, 0.1);
+  border-radius: 12px;
+  padding: 16px;
+  font-family: $font-default;
+  font-size: 1.4rem;
+  line-height: 1.8;
+  color: $color_wh;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+// ── Toast ────────────────────────────────────────────────────────────────────
+
+.p-toast {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: rgba($color_input, 0.95);
+  color: $color_wh;
+  border: 1px solid rgba($color_wh, 0.1);
+  border-radius: 24px;
+  padding: 10px 20px;
+  font-size: 1.4rem;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s $ease, transform 0.25s $ease;
+  z-index: 999;
+
+  &.is-show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  &.is-hide {
+    opacity: 0;
+    transform: translateX(-50%) translateY(6px);
+  }
+}

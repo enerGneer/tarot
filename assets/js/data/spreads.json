@@ -1,0 +1,17 @@
+[
+  {
+    "id": "past-present-future",
+    "name": "과거 / 현재 / 미래",
+    "positions": ["과거", "현재", "미래"]
+  },
+  {
+    "id": "situation-obstacle-advice",
+    "name": "상황 / 장애물 / 조언",
+    "positions": ["상황", "장애물", "조언"]
+  },
+  {
+    "id": "mind-action-result",
+    "name": "마음 / 행동 / 결과",
+    "positions": ["마음", "행동", "결과"]
+  }
+]

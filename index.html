@@ -1,15 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarot</title>
-    <!-- style.scss를 링크한다 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarot</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    
+
+  <!-- Drawing View -->
+  <div id="drawing-view" class="view drawing-view">
+    <header class="p-header">
+      <h1>Tarot - 3 Card Spread</h1>
+    </header>
+    <div class="u-inner">
+        <div class="p-top">
+            <textarea
+              id="question-input"
+              class="p-question"
+              placeholder="질문을 입력해주세요."
+              rows="1"
+            ></textarea>
+      
+            <select id="spread-select" class="p-spread-select">
+              <option value="">배열 선택</option>
+            </select>
+      
+            <div id="position-slots" class="p-position-slots is-hidden"></div>
+        </div>
+
+      <div id="card-deck" class="p-deck"></div>
+
+      <button id="draw-btn" class="c-btn p-draw-btn" type="button">
+        남은 카드 <span class="c-count-badge">3</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Result View -->
+  <div id="result-view" class="view result-view is-hidden">
+    <header class="p-header">
+      <button id="back-btn" class="p-back-btn" type="button" aria-label="뒤로가기">&#8249;</button>
+      <h1>결과</h1>
+    </header>
+    <div class="u-inner">
+      <div id="result-cards" class="p-result-cards"></div>
+      <div class="p-copy-block">
+        <pre id="copy-text" class="p-copy-text"></pre>
+        <button id="copy-btn" class="c-btn is-active" type="button">복사하기</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="p-toast" aria-live="polite">클립보드로 복사되었습니다</div>
+
+  <script type="module" src="assets/js/app.js"></script>
 </body>
 </html>
