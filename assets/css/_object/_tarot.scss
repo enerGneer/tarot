@@ -1,4 +1,4 @@
-@use "../../_foundation/setting" as *;
+@use "../_foundation/setting" as *;
 
 $tarot-gap: 30px;
 .c-btn {
@@ -209,12 +209,15 @@ $tarot-gap: 30px;
     flex-direction: column;
     gap: $tarot-gap;
     padding-top: $tarot-gap;
-    padding-bottom: 40px;
+    padding-bottom: 60px;
   }
 }
 
 .p-header {
   position: sticky;
+  &.mod--relative {
+    position: relative;
+  }
   top: 0;
   height: 60px;
   background: $color_bg;
@@ -291,8 +294,6 @@ $tarot-gap: 30px;
       width: 100%;
       display: block;
       border-radius: 2px;
-      aspect-ratio: 2 / 3;
-      object-fit: cover;
     }
   }
 

@@ -6,8 +6,8 @@ $color_bg: #2B293B;
 $color_input: #47455D;
 
 $color_card_r_bg: #F2EFED; //result card
-$color_card_b_main: #6A5E92; // drw card main
-$color_card_b_main_p: #968AAC; // drw card main
+$color_card_b_main: #574d7a; // drw card main
+$color_card_b_main_p: #9084a5; // drw card main
 $color_card_b_border: #B9ACE0; // drw card border
 $color_card_b_sdw: 0 10px 18px #00000047; // drw card box-shadow
 $color_card_b_br: 3px; // drw card border-radius
@@ -50,6 +50,15 @@ $xl: 1200px;
         @content;
     }
 }
+
+.u-inner {
+  position: relative;
+  max-width: 525px;
+  display: block;
+  margin-inline: auto;
+  width: 90%;
+}
+
 
 // ------------------------------------------------------------
 //  Clamp Size Calculator

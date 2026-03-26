@@ -102,14 +102,23 @@ function buildDeck(container) {
   const containerWidth = container.clientWidth;
   if (containerWidth === 0) return;
 
-  const perRow = Math.ceil(shuffledDeck.length / DECK_ROWS);
   const cardWidth = CARD_W;
   const cardHeight = CARD_H;
+  const minVisible = 25; // minimum visible strip per card (px)
+
+  // Calculate max cards per row based on container width
+  // Formula: containerWidth >= cardWidth + (perRow - 1) * minVisible
+  const perRow = Math.min(
+    shuffledDeck.length,
+    Math.floor((containerWidth - cardWidth) / minVisible) + 1
+  );
+  const totalRows = Math.ceil(shuffledDeck.length / perRow);
+
   // Floor the visible strip so total row width never exceeds containerWidth
   const visibleW = Math.floor((containerWidth - cardWidth) / (perRow - 1));
   const overlap = cardWidth - visibleW;
 
-  for (let row = 0; row < DECK_ROWS; row++) {
+  for (let row = 0; row < totalRows; row++) {
     const start = row * perRow;
     const end = Math.min(start + perRow, shuffledDeck.length);
     if (start >= shuffledDeck.length) break;

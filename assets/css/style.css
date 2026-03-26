@@ -1,3 +1,11 @@
+.u-inner {
+  position: relative;
+  max-width: 525px;
+  display: block;
+  margin-inline: auto;
+  width: 90%;
+}
+
 html {
   font-size: 62.5%;
   scroll-behavior: smooth;
@@ -380,7 +388,7 @@ h1, h2, h3, h4, h5, h6 {
 .p-card-back {
   box-sizing: border-box;
   flex-shrink: 0;
-  background: linear-gradient(145deg, rgb(152.6575, 143.4925, 183.2075) 0%, #6A5E92 100%);
+  background: linear-gradient(145deg, rgb(128.7608040201, 117.4894472362, 168.2105527638) 0%, #574d7a 100%);
   border: 1px solid #B9ACE0;
   border-radius: 3px;
   box-shadow: 0 10px 18px rgba(0, 0, 0, 0.2784313725);
@@ -450,11 +458,16 @@ h1, h2, h3, h4, h5, h6 {
   flex-direction: column;
   gap: 30px;
   padding-top: 30px;
-  padding-bottom: 40px;
+  padding-bottom: 60px;
 }
 
 .p-header {
   position: sticky;
+}
+.p-header.mod--relative {
+  position: relative;
+}
+.p-header {
   top: 0;
   height: 60px;
   background: #2B293B;
@@ -534,9 +547,6 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   display: block;
   border-radius: 2px;
-  aspect-ratio: 2/3;
-  -o-object-fit: cover;
-     object-fit: cover;
 }
 .p-result-card__name {
   font-size: 1.1rem;
@@ -588,15 +598,4 @@ h1, h2, h3, h4, h5, h6 {
 .p-toast.is-hide {
   opacity: 0;
   transform: translateX(-50%) translateY(6px);
-}
-
-.u-inner {
-  position: relative;
-  display: block;
-  margin-inline: auto;
-  width: 90%;
-}
-
-.u-inner {
-  max-width: 500px;
 }/*# sourceMappingURL=style.css.map */
