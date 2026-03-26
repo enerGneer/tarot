@@ -13,5 +13,35 @@
     "id": "mind-action-result",
     "name": "마음 / 행동 / 결과",
     "positions": ["마음", "행동", "결과"]
+  },
+  {
+    "id": "desire-obstacle-solution",
+    "name": "욕망 / 장애물 / 해결책",
+    "positions": ["욕망", "장애물", "해결책"]
+  },
+  {
+    "id": "embrace-accept-letgo",
+    "name": "끌어안기 / 받아들이기 / 놓아주기",
+    "positions": ["끌어안기", "받아들이기", "놓아주기"]
+  },
+  {
+    "id": "mind-body-spirit",
+    "name": "마음 / 몸 / 영혼",
+    "positions": ["마음", "몸", "영혼"]
+  },
+  {
+    "id": "dream-life-fear",
+    "name": "꿈 / 삶 / 두려움",
+    "positions": ["꿈", "삶", "두려움"]
+  },
+  {
+    "id": "tomorrow-nextweek-nextmonth",
+    "name": "내일 / 다음 주 / 다음 달",
+    "positions": ["내일", "다음 주", "다음 달"]
+  },
+  {
+    "id": "red-yellow-green",
+    "name": "빨간불 / 노란불 / 초록불",
+    "positions": ["빨간불 (멈춤)", "노란불 (보류)", "초록불 (진행)"]
   }
 ]
