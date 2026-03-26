@@ -124,7 +124,7 @@ $tarot-gap: 30px;
 .p-deck {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 10px;
 }
 
 .p-deck-row {
@@ -147,6 +147,16 @@ $tarot-gap: 30px;
   @include hover {
     transform: translateY(-6px);
     z-index: 10;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 80'%3E%3Ccircle cx='20' cy='12' r='0.9' fill='rgba(255,255,255,0.25)'/%3E%3Ccircle cx='20' cy='17' r='0.9' fill='rgba(255,255,255,0.25)'/%3E%3Cpath d='M20 24l3 7 7 3-7 3-3 7-3-7-7-3 7-3z' fill='none' stroke='rgba(255,255,255,0.35)' stroke-width='0.8' stroke-linejoin='round'/%3E%3Cpath d='M20 50l1.5 3.5 3.5 1.5-3.5 1.5L20 60l-1.5-3.5L15 55l3.5-1.5z' fill='none' stroke='rgba(255,255,255,0.35)' stroke-width='0.7' stroke-linejoin='round'/%3E%3Ccircle cx='20' cy='65' r='0.9' fill='rgba(255,255,255,0.25)'/%3E%3Ccircle cx='20' cy='70' r='0.9' fill='rgba(255,255,255,0.25)'/%3E%3C/svg%3E") no-repeat center center;
+    background-size: 85% 85%;
+    pointer-events: none;
+    border-radius: inherit;
   }
 
   &.is-selected {
