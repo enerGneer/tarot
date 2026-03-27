@@ -104,15 +104,27 @@ function buildDeck(container) {
 
   const cardWidth = CARD_W;
   const cardHeight = CARD_H;
-  const minVisible = 25; // minimum visible strip per card (px)
+  const minVisible = 8;
+  const total = shuffledDeck.length;
 
-  // Calculate max cards per row based on container width
-  // Formula: containerWidth >= cardWidth + (perRow - 1) * minVisible
-  const perRow = Math.min(
-    shuffledDeck.length,
+  // Responsive target rows: mobile 7, tablet/PC 4
+  const vw = window.innerWidth;
+  const targetRows = vw <= 480 ? 7 : 4;
+
+  // Max cards that physically fit in one row
+  const maxPerRow = Math.min(
+    total,
     Math.floor((containerWidth - cardWidth) / minVisible) + 1
   );
-  const totalRows = Math.ceil(shuffledDeck.length / perRow);
+
+  // C-method: start with target rows, ensure perRow doesn't exceed maxPerRow
+  let totalRows = targetRows;
+  let perRow = Math.ceil(total / totalRows);
+
+  while (perRow > maxPerRow && totalRows < total) {
+    totalRows++;
+    perRow = Math.ceil(total / totalRows);
+  }
 
   // Floor the visible strip so total row width never exceeds containerWidth
   const visibleW = Math.floor((containerWidth - cardWidth) / (perRow - 1));
@@ -120,11 +132,12 @@ function buildDeck(container) {
 
   for (let row = 0; row < totalRows; row++) {
     const start = row * perRow;
-    const end = Math.min(start + perRow, shuffledDeck.length);
-    if (start >= shuffledDeck.length) break;
+    const end = Math.min(start + perRow, total);
+    if (start >= total) break;
 
     const rowEl = document.createElement('div');
     rowEl.className = 'p-deck-row';
+    rowEl.style.animationDelay = (row * 80) + 'ms';
 
     for (let i = start; i < end; i++) {
       const card = shuffledDeck[i];
@@ -277,7 +290,7 @@ function getPromptSuffix(hasSpread) {
 function buildCopyText(cards, question, spread) {
   const lines = [];
   if (question) lines.push(`질문 : ${question}`);
-  if (spread) lines.push(`3카드 스프레드 : ${spread.name}`);
+  if (spread) lines.push(`스프레드 : ${spread.name}`);
   cards.forEach((card, i) => {
     if (spread) {
       lines.push(`${i + 1}. ${spread.positions[i]} : ${card.name}`);
@@ -297,7 +310,7 @@ async function copyToClipboard(text, btn) {
     // clipboard API unavailable — silent fail (HTTPS context required)
   }
   btn.textContent = '복사완료';
-  showToast();
+  if (window.innerWidth > 480) showToast();
   setTimeout(() => { btn.textContent = '복사하기'; }, 3000);
 }
 
