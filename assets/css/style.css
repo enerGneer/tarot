@@ -383,8 +383,17 @@ h1, h2, h3, h4, h5, h6 {
 .p-deck-row {
   display: flex;
   align-items: flex-start;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: deckRowIn 0.4s cubic-bezier(0.42, 0, 0.58, 1) forwards;
 }
 
+@keyframes deckRowIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .p-card-back {
   box-sizing: border-box;
   flex-shrink: 0;

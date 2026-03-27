@@ -130,6 +130,16 @@ $tarot-gap: 30px;
 .p-deck-row {
   display: flex;
   align-items: flex-start;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: deckRowIn 0.4s $ease forwards;
+}
+ 
+@keyframes deckRowIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .p-card-back {
