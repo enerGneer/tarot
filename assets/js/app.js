@@ -183,12 +183,12 @@ function updateDrawBtn() {
   if (remaining > 0) {
     btn.disabled = true;
     btn.classList.remove('is-active');
-    btn.innerHTML = `남은 카드 <span class="c-count-badge">${remaining}</span>`;
+    btn.innerHTML = `<span>남은 카드</span> <span class="c-count-badge">${remaining}</span>`;
     btn.onclick = null;
   } else {
     btn.disabled = false;
     btn.classList.add('is-active');
-    btn.textContent = '결과 보기';
+    btn.innerHTML = '<span>결과 보기</span>';
     btn.onclick = goToResult;
   }
 }
@@ -254,7 +254,7 @@ function showResultView(params) {
   document.getElementById('copy-text').textContent = copyText;
 
   const copyBtn = document.getElementById('copy-btn');
-  copyBtn.textContent = '복사하기';
+  copyBtn.innerHTML = '<span>복사하기</span>';
   copyBtn.onclick = () => copyToClipboard(copyText, copyBtn);
 
   // Back button
@@ -309,9 +309,9 @@ async function copyToClipboard(text, btn) {
   } catch {
     // clipboard API unavailable — silent fail (HTTPS context required)
   }
-  btn.textContent = '복사완료';
+  btn.innerHTML = '<span>복사완료</span>';
   if (window.innerWidth > 480) showToast();
-  setTimeout(() => { btn.textContent = '복사하기'; }, 3000);
+  setTimeout(() => { btn.innerHTML = '<span>복사하기</span>'; }, 3000);
 }
 
 function showToast() {
