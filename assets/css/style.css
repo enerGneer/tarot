@@ -271,7 +271,7 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 48px;
+  height: 54px;
   width: 100%;
   border-radius: 100px;
   font-size: 18px;
@@ -548,7 +548,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .p-result-card__img {
   width: 100%;
-  padding: 5px;
+  padding: 4px;
   border-radius: 5px;
   background: #F2EFED;
 }
