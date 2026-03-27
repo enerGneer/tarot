@@ -4,9 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tarot</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fonts-archive/Pretendard/subsets/Pretendard-dynamic-subset.css" type="text/css"/>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -35,7 +33,7 @@
       <div id="card-deck" class="p-deck"></div>
 
       <button id="draw-btn" class="c-btn p-draw-btn" type="button">
-        남은 카드 <span class="c-count-badge">3</span>
+        <span>남은 카드</span> <span class="c-count-badge">3</span>
       </button>
     </div>
   </div>
@@ -50,7 +48,7 @@
       <div id="result-cards" class="p-result-cards"></div>
       <div class="p-copy-block">
         <pre id="copy-text" class="p-copy-text"></pre>
-        <button id="copy-btn" class="c-btn is-active" type="button">복사하기</button>
+        <button id="copy-btn" class="c-btn is-active" type="button"><span>복사하기</span></button>
       </div>
     </div>
   </div>
